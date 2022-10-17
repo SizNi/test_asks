@@ -10,7 +10,7 @@ def length(num_list, len_list = 0):  # принимает список и воз
 length([1, 2, 3])
 
 
-def reverse_range(begin, end, memory = [] ):  # получает начало и конец, то что между ними надо выдать списком и перевернуть
+def reverse_range(begin, end, memory = []):  # получает начало и конец, то что между ними надо выдать списком и перевернуть
     if begin <= end:
         memory.append(end)
         end -= 1
@@ -18,13 +18,9 @@ def reverse_range(begin, end, memory = [] ):  # получает начало и
     else:
         memory_ret = memory.copy()
         memory.clear()
-        print(memory)
-        print(memory_ret)
         return memory_ret
 
 
-reverse_range(1, 1)
-reverse_range(1, 2)
 reverse_range(1, 10)
 
 
@@ -38,8 +34,9 @@ def filter_positive(num_list, new_num_list = [], i = 0):
             i += 1
             return filter_positive(num_list, new_num_list, i)
     else:
-        #print(new_num_list)
-        return new_num_list
+        new2_num_list = new_num_list.copy()
+        new_num_list.clear()
+        return new2_num_list
         
     
 filter_positive([1, -2, 3])
