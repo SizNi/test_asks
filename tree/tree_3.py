@@ -6,7 +6,7 @@ from hexlet.fs import get_children, get_meta, get_name, is_file, mkdir, mkfile
 def compress_images(tree):  # получаем директорию
     children = get_children(tree)  # получаем каталог объектов в директории
 
-    def reduce_image_size(node):  # почему то получает объект из children
+    def reduce_image_size(node):  # получает объект из children
         name = get_name(node)  # получаем имя объекта
         if not is_file(node) or not name.endswith('.jpg'):  # если объект не файл и не заканчивается на .jpg - не трогаем его
             return node
