@@ -18,7 +18,7 @@ def du(tree):  # основная функция
         lambda child: (get_name(child), calculate_entry_size(child)),
         children,
     ))
-    result.sort(key=lambda entry: entry[1], reverse=True)  # сортируем по ключу entre[1] в обратном порядке
+    result.sort(key=lambda entry: entry[1], reverse=True)  # сортируем по ключу entry[1] в обратном порядке
     print(result)
     return result
 
