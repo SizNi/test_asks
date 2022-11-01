@@ -1,3 +1,4 @@
+import itertools
 def stringify(value, replacer=' ', space_count=1):
     if type(value) != dict:  # проверяем, словарь или нет
         return str(value)
@@ -23,7 +24,25 @@ def _stringify(value, lines, replacer, space_count, space):
         else:  # если значение -  не словарь
             lines.append(f'{replacer_new}{elem}: {value[elem]}')  # вставляем пробел, ключ, двоеточие и значение
     return lines
-# END
+
+# решение учителя:
+
+def stringify_1(value, replacer=' ', spaces_count=1):
+
+    def iter_(current_value, depth):
+        if not isinstance(current_value, dict):  # если не словарь - возвращаем строчное значение value
+            return str(current_value)
+
+        deep_indent_size = depth + spaces_count  # отсчет количества отступов
+        deep_indent = replacer * deep_indent_size  # умножаем количество отступов на значение отступа - отступ следующего этапа
+        current_indent = replacer * depth  # текущий отступ (в начале = 0, тк depth = 0)
+        lines = []
+        for key, val in current_value.items():  # для ключа и значения в value
+            lines.append(f'{deep_indent}{key}: {iter_(val, deep_indent_size)}')
+        result = itertools.chain("{", lines, [current_indent + "}"])  # добавляет открывающие и закрывающие скобки
+        return '\n'.join(result)
+    print(iter_(value, 0))
+    return iter_(value, 0)
 
 value = {
     "string": "value",
@@ -42,4 +61,4 @@ value = {
         },
     },
 }
-stringify(value, '|-', 2)
+stringify_1(value, '|-', 2)
