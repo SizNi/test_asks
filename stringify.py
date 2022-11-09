@@ -28,7 +28,7 @@ def _stringify(value, lines, replacer, space_count, space):
 # решение учителя:
 
 def stringify_1(value, replacer=' ', spaces_count=1):
-
+    print
     def iter_(current_value, depth):
         if not isinstance(current_value, dict):  # если не словарь - возвращаем строчное значение value
             return str(current_value)
@@ -44,7 +44,7 @@ def stringify_1(value, replacer=' ', spaces_count=1):
     print(iter_(value, 0))
     return iter_(value, 0)
 
-value = {
+value1 = {
     "string": "value",
     "boolean": True,
     "number": 5,
@@ -61,4 +61,32 @@ value = {
         },
     },
 }
-stringify_1(value, '|-', 2)
+value = {
+    "common": {
+      "setting1": "Value 1",
+      "setting2": 200,
+      "setting3": 'true',
+      "setting6": {
+        "key": "value",
+        "doge": {
+          "wow": ""
+        }
+      }
+    },
+    "group1": {
+      "baz": "bas",
+      "foo": "bar",
+      "nest": {
+        "key": "value"
+      }
+    },
+    "group2": {
+      "abc": 12345,
+      "deep": {
+        "id": 45
+      }
+    }
+  }
+value3 = {'  common': {'+ follow': False, '  setting1': 'Value 1', '- setting2': 200, '- setting3': True, '+ setting3': None, '+ setting4': 'blah blah', '+ setting5': {'+ key5': 'value5'}, '  setting6': {'  doge': {'- wow': '', '+ wow': 'so much'}, '  key': 'value', '+ ops': 'vops'}}, '  group1': {'- baz': 'bas', '+ baz': 'bars', '  foo': 'bar', '- nest': {'- key': 'value'}, '+ nest': 'str'}, '- group2': {'- abc': 12345, '- deep': {'- id': 45}}, '+ group3': {'+ deep': {'+ id': {'+ number': 45}}, '+ fee': 100500}}
+# value = {'123': '12', 'affaf': '1dslmg'}
+stringify_1(value3, '|~|', 1)
