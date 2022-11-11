@@ -1,4 +1,4 @@
-def find_longest_length(s):
+def find_longest_length(s):  # находит самую длинную подстроку без повторяющихся элементов и ее длинну
     checklist = {}
     start = 0
     lon_len = 0
