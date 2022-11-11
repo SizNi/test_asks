@@ -9,6 +9,8 @@ def find_longest_length(s):
             start = max(start, checklist[v] + 1)
         if v in checklist:
             result = s[checklist[v]:i]
+        else:
+            result = s
         checklist[v] = i
         lon_len = max(lon_len, i - start + 1)
     return result, lon_len
