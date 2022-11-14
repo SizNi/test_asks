@@ -1,11 +1,12 @@
-def matmult(a, b):
+# решение из интернета
+def multiply(a, b):
     zip_b = list(zip(*b))
     print(zip_b)
     return [[sum(ele_a*ele_b for ele_a, ele_b in zip(row_a, col_b)) 
              for col_b in zip_b] for row_a in a]
 
-###
-def matmult_1(a, b):
+# мое решение, похожее на решение из интернета (не доделал)
+def multiply_1(a, b):
     zip_b = list(zip(*b))
     result_1 = []
     result_2 = []
@@ -26,10 +27,27 @@ def matmult_1(a, b):
     result_4.append(result_3)
     result_3.clear
     #print(result_4)
-            
 
-    
-###  
+# решение преподавателя
+
+            
+def zero_matrix(rows, columns):
+    matrix = []
+    row = [0] * columns
+    for _ in range(rows):
+        matrix.append(row[:])
+    return matrix
+
+
+def multiply(a, b):
+    rows_in_a = len(a)
+    columns_in_b = len(b[0])
+    c = zero_matrix(rows_in_a, columns_in_b)
+    for row_a, row_c in zip(a, c):
+        for x in range(columns_in_b):
+            for y, row_b in enumerate(b):
+                row_c[x] += row_a[y] * row_b[x]
+    return c 
 
 
 A = [
